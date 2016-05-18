@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="Jonathan Ben-Ammi">
+	<title></title>
+	<meta name="description" content="">
+	<link rel="stylesheet" type="text/css" href="/static/css/materialize.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/materialize_icons.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+</head>
+<body>
+<nav>
+	<dir class="nav-wrapper blue">
+		<div class="container">
+			<p id="logo-container" class="brand-logo left">Welcome to FriendsList!</p>
+			<div class="navlinks">
+				<ul class="right">
+
+				</ul>
+			</div>
+		</div>
+	</dir>
+</nav>
+<div class="container section">
+	<div class="row">
+		<form class="col s6" action="/register" method="post">
+			<fieldset>
+				<legend>Register</legend>
+				{% with errors = get_flashed_messages() %}
+				{% if errors[0] %}
+				<p class="green-text">{{errors[0]['registered']}}</p>
+				{% endif %}
+				{% if errors[0] %}
+				<p class="red-text">{{errors[0]['user_registered']}}</p>
+				{% endif %}
+				{% if errors[0] %}
+				<p class="red-text">{{errors[0]['name']}}</p>
+				{% endif %}				
+				<label>Name</label>
+				<input type="text" name="name" />
+				{% if errors[0] %}
+				<p class="red-text">{{errors[0]['alias']}}</p>
+				{% endif %}
+				<label>Alias</label>
+				<input type="text" name="alias" />
+				{% if errors[0] %}
+				<p class="red-text">{{errors[0]['email']}}</p>
+				{% endif %}	
+				<label>E-mail</label>
+				<input type="text" name="email" />
+				{% if errors[0] %}
+				<p class="red-text">{{errors[0]['password']}}</p>
+				{% endif %}
+				<label>Password</label>
+				<input type="password" name="password" />
+				<p class="label">Password should be at lease 8 characters and container at least one number and one Uppercase letter</p>
+				{% if errors[0] %}
+				<p class="red-text">{{errors[0]['confirmpass']}}</p>
+				{% endif %}	
+				<label>Confirm Password</label>
+				<input type="password" name="confirmpass" />
+				{% if errors[0] %}
+				<p class="red-text">{{errors[0]['birthdate']}}</p>
+				{% endif %}	
+				<label>Date of Birth</label>
+				<input type="date" name="birthdate" />
+				<button class="btn waves-effect waves-light blue right" type="submit" name="action">Submit</button>
+			</fieldset>
+		</form>
+		<form class="col s6" action="/login" method="post">
+			<fieldset>
+				<legend>login</legend>
+				{% if errors[0] %}
+				<p class="red-text">{{errors[0]['notreg']}}</p>
+				{% endif %}
+				{% if errors[0] %}
+				<p class="red-text">{{errors[0]['passmatch']}}</p>
+				{% endif %}				
+				{% if errors[0] %}
+				<p class="red-text">{{errors[0]['email2']}}</p>
+				{% endif %}
+				<label>E-mail</label>
+				<input type="text" name="email" />
+				{% if errors[0] %}
+				<p class="red-text">{{errors[0]['password2']}}</p>
+				{% endif %}
+				<label>Password</label>
+				<input type="password" name="password" />
+				<button class="btn waves-effect waves-light blue right" type="submit" name="action">Submit</button>
+				{% endwith %}
+			</fieldset>
+		</form>
+	</div>
+</div>
+
+	<!-- Start Scripts -->
+	<script src="/static/js/jquery-2.2.3.js"></script>
+	<script src="/static/js/jquery-ui.js"></script>
+	<script src="/static/js/materialize.js"></script>
+	<script type="text/javascript" src=""></script>
+</body>
+</html>

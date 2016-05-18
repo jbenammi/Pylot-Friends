@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="Jonathan Ben-Ammi">
+	<title></title>
+	<meta name="description" content="">
+	<link rel="stylesheet" type="text/css" href="/static/css/materialize.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/materialize_icons.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+</head>
+<body>
+<nav>
+	<dir class="nav-wrapper blue">
+		<div class="container">
+			<p id="logo-container" class="brand-logo left">Hello {{session['logged_info']['alias']}}!</p>
+			<div class="navlinks">
+				<ul class="right">
+					<li><a href="/logout">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</dir>
+</nav>
+<div class="container section">
+<h4>Here is the list of your friends:</h4>
+{% if friend_info[0] == [] %}
+<h5>You don't have friends yet, why not add some now!</h5>
+{% endif %}
+<table>
+	<thead>
+		<tr>
+			<th>Alias</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for friend in friend_info[0] %}
+
+		<tr>
+			<td>{{friend['u2_alias']}}</td>
+			<td><a href="/user/{{friend['u2_id']}}">View Profile</a> | <a href="/remove/{{friend['u2_id']}}">Remove as Friend</a></td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+<h4>Other Users not on your friend's list:</h4>
+<table>
+	<thead>
+		<tr>
+			<th>Alias</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for friend in friend_info[1] %}
+		{% if friend['u_id'] != session['logged_info']['id'] %}
+		<tr>
+			<td><a href="/user/{{friend['u_id']}}">{{friend['u_alias']}}</a></td>
+			<td><a href="/add/{{friend['u_id']}}"><button class="btn waves-effect waves-light">Add as Friend</button></a></td>
+		</tr>
+		{% endif %}
+		{% endfor %}
+	</tbody>
+</div>
+
+	<!-- Start Scripts -->
+	<script src="/static/js/jquery-2.2.3.js"></script>
+	<script src="/static/js/jquery-ui.js"></script>
+	<script src="/static/js/materialize.js"></script>
+	<script type="text/javascript" src=""></script>
+</body>
+</html>

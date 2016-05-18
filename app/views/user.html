@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="Jonathan Ben-Ammi">
+	<title></title>
+	<meta name="description" content="">
+	<link rel="stylesheet" type="text/css" href="/static/css/materialize.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/materialize_icons.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+</head>
+<body>
+<nav>
+	<dir class="nav-wrapper blue">
+		<div class="container">
+			<p id="logo-container" class="brand-logo left">Welcome!</p>
+			<div class="navlinks">
+				<ul class="right">
+					<li><a href="/view_friends">Home</a></li>
+					<li><a href="/logout">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</dir>
+</nav>
+<div class="container section">
+<h3>{{user_info['alias']}}'s Profile</h3>
+<h4>Name: {{user_info['name']}}</h4>
+<h4>E-Mail: {{user_info['email']}}</h4>
+<h4>Birthday: {{user_info['birthdate'].strftime('%B %d, %Y')}}</h4>
+</div>
+
+	<!-- Start Scripts -->
+	<script src="/static/js/jquery-2.2.3.js"></script>
+	<script src="/static/js/jquery-ui.js"></script>
+	<script src="/static/js/materialize.js"></script>
+	<script type="text/javascript" src=""></script>
+</body>
+</html>
